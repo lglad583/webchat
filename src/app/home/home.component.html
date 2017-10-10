@@ -1,0 +1,73 @@
+
+<!-- Loading overlay section starts -->
+<div [class.overlay-display]="overlayDisplay" class="overlay">
+  <h1>Loading</h1>
+</div>
+<!-- Loading overlay section starts -->
+
+<div class="home">
+
+  <!-- header section starts -->
+  <div class="header">
+    <div class="welcome-user">
+      <span>Hello {{username}}</span>
+      <div class="home-navigation">
+        <ul>
+          <li (click)="logout()" >Logout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- header section ends -->
+
+  <div class="row chat-body">
+
+    <!-- Messages section starts -->
+    <div class="col-md-8">
+      <div class="message-wrapper">
+        <div *ngIf="selectedUserName"
+             class="opposite-user">
+          Chatting with {{selectedUserName}}
+        </div>
+
+        <ul class="message-thread">
+
+          <li *ngFor="let message of messages"
+              [class.align-right]="alignMessage(message.toUserId)"
+          >
+            {{ message.message}}
+          </li>
+        </ul>      </div>
+    </div>
+
+    <div class="message-typer">
+	<textarea
+    class="message form-control"
+    placeholder="Type and hit Enter"
+    [(ngModel)]="message"
+    (keyup)="sendMessage($event)"
+  ></textarea>
+    </div>
+    <!-- Messages section ends -->
+
+    <!-- User chat list section starts -->
+    <div class="col-md-4">
+      <div class="user-list-wrapper">
+        <ul class="user-list">
+
+          <!-- click event to handle the selection : selectedUser() -->
+          <!-- adding a class to indicate the selection -->
+          <li *ngFor="let user of chatListUsers"
+              (click)="selectedUser(user)"
+              [class.selected-user]="isUserSelected(user._id)"
+          >
+            {{ user.username}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- User chat list section ends -->
+
+  </div>
+
+</div>
