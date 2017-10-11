@@ -7,7 +7,6 @@ import { ActivatedRoute ,Router } from '@angular/router';
 import { SocketService } from '../socket.service';
 import { HttpService } from '../http.service';
 import { ChatService } from '../chat.service';
-import {Message} from "_debugger";
 /* Importing services ends*/
 
 @Component({
@@ -35,7 +34,7 @@ export class HomeComponent implements OnInit {
   public selectedUserId: any;
   public selectedSocketId: any;
   public selectedUserName: any;
-  public messages: any | Message[];
+  public messages: any =[];
   public message: string;
   public socketId: any;
   /*
@@ -169,7 +168,7 @@ export class HomeComponent implements OnInit {
         }else if(this.userId === ''){
           this.router.navigate(['/']);
         }else if(this.selectedUserId === ''){
-          alert(`Select a user to chat.`);
+          alert('Select a user to chat.');
         }else{
 
           const data = {
@@ -181,7 +180,7 @@ export class HomeComponent implements OnInit {
           }
           this.messages.push(data);
           setTimeout( () =>{
-            document.querySelector(`.message-thread`).scrollTop = document.querySelector(`.message-thread`).scrollHeight;
+            document.querySelector('.message-thread').scrollTop = document.querySelector('.message-thread').scrollHeight;
           },100);
 
           /*

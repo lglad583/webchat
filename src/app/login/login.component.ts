@@ -29,9 +29,9 @@ export class LoginComponent{
 
   public login():void{
 
-    if(this.username === '' || this.username === null) {
+    if(this.username === '' ) {
       alert(`Username can't be empty.`);
-    }else if(this.password === '' || this.password === null ){
+    }else if(this.password === ''){
       alert(`Password can't be empty.`);
     }else{
       this.chatService.login({

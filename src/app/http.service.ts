@@ -26,25 +26,25 @@ export class HttpService {
   constructor( private http:Http) { }
 
   public userNameCheck(params){
-    return this.http.post(`${this.BASE_URL}usernameCheck`,JSON.stringify(params),this.headerOptions)
+    return this.http.post('${this.BASE_URL}usernameCheck',JSON.stringify(params),this.headerOptions)
       .map( (response:Response) => response.json())
       .catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
   }
 
   public login(params){
-    return this.http.post(`${this.BASE_URL}login`,JSON.stringify(params),this.headerOptions)
+    return this.http.post('${this.BASE_URL}login',JSON.stringify(params),this.headerOptions)
       .map( (response:Response) => response.json())
       .catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
   }
 
   public registerUser(params){
-    return this.http.post(`${this.BASE_URL}registerUser`,JSON.stringify(params),this.headerOptions)
+    return this.http.post('${this.BASE_URL}registerUser',JSON.stringify(params),this.headerOptions)
       .map( (response:Response) => response.json())
       .catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
   }
 
   public userSessionCheck(params){
-    return this.http.post(`${this.BASE_URL}userSessionCheck`,JSON.stringify(params),this.headerOptions)
+    return this.http.post('${this.BASE_URL}userSessionCheck',JSON.stringify(params),this.headerOptions)
       .map( (response:Response) => response.json())
       .catch( (error:any) => Observable.throw(error.json().error || `Server error`) );
   }
